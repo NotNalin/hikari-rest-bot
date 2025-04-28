@@ -2,3 +2,4 @@ hikari[server]
 hikari-arc[rest]
 fastapi
 uvicorn
+python-dotenv
