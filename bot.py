@@ -12,8 +12,13 @@ bot = hikari.RESTBot(
 )
 
 # Create arc client
-client = arc.RESTClient(bot)
-
+client = arc.RESTClient(
+    bot,
+    integration_types=[
+        hikari.ApplicationIntegrationType.GUILD_INSTALL,
+        hikari.ApplicationIntegrationType.USER_INSTALL
+    ]
+)
 
 @client.include
 @arc.slash_command("hi", "Say hi to someone!")
@@ -108,6 +113,4 @@ async def avatar(
     await ctx.respond(f"**{target.username}'s Avatar**\n{target.avatar_url}")
 
 
-# Local development runner
-if __name__ == "__main__":
-    bot.run()
+bot.run()
